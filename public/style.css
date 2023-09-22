@@ -1,0 +1,61 @@
+:root {
+	--primary-font-color: black;
+	--primary-bg-color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--primary-font-color: aliceblue;
+		--primary-bg-color: #222;
+		--primary-bg-color: rgb(32, 33, 36);
+	}
+}
+
+body,
+pre,
+code {
+	font-family: "Fira Code", Menlo, Monaco, "Courier New", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: var(--primary-bg-color);
+		color: var(--primary-font-color);
+	}
+}
+
+body {
+	font-size: small;
+}
+
+article {
+	padding: 0 1em;
+	max-width: 650px;
+}
+
+a {
+	color: var(--primary-font-color);
+}
+
+a[target="_blank"] {
+	font-style: italic;
+}
+
+ul {
+	padding-left: 30px;
+}
+
+pre,
+code {
+	background-color: rgba(255, 255, 255, 0.05);
+}
+
+code {
+	outline: 1px solid rgba(255, 255, 255, 0.07);
+	color: rgb(240, 248, 255, 0.7);
+	border-radius: 1px;
+}
+s {
+	/* color: rgb(240, 248, 255, 0.5); */
+	opacity: 0.3;
+}

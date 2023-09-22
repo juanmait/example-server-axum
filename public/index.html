@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+
+		<link rel="stylesheet" href="/style.css" />
+
+		<title>Hello Rust!</title>
+	</head>
+
+	<body>
+		<article>
+			<h1>Axum</h1>
+
+			<h2>FromRequest</h2>
+			<blockquote>
+				See
+				<a
+					title="FromRequest in axum::extract - Rust"
+					href="https://docs.rs/axum/latest/axum/extract/trait.FromRequest.html"
+					target="_blank"
+					>axum::extract::FromRequest</a
+				>
+			</blockquote>
+
+			<p>
+				<a
+					href="https://docs.rs/axum/latest/axum/extract/trait.FromRequest.html"
+					target="_blank"
+					>FromRequest</a
+				>
+				is an
+				<a href="https://docs.rs/axum/latest/axum/extract/index.html" target="_blank"
+					>extractor</a
+				>. Implementing
+				<a
+					href="https://docs.rs/axum/latest/axum/extract/trait.FromRequest.html"
+					target="_blank"
+					>FromRequest</a
+				>
+				for a type <code>T</code> will allow us to use <code>T</code> as the parameter to
+				for
+				<a href="https://docs.rs/axum/latest/axum/handler/index.html" target="_blank"
+					>handler</a
+				>.
+			</p>
+
+			<p>
+				Reminder: In axum a
+				<a href="https://docs.rs/axum/latest/axum/handler/index.html" target="_blank"
+					>handler</a
+				>
+				is an async function that accepts zero or more
+				<a href="https://docs.rs/axum/latest/axum/extract/index.html" target="_blank"
+					>extractors</a
+				>. For a function to be used as a
+				<a href="https://docs.rs/axum/latest/axum/handler/index.html" target="_blank"
+					>handler</a
+				>
+				it must implement the
+				<a
+					href="https://docs.rs/axum/latest/axum/handler/trait.Handler.html"
+					target="_blank"
+					>Handler</a
+				>
+				trait. Axum provide blanket implementations of
+				<a
+					href="https://docs.rs/axum/latest/axum/handler/trait.Handler.html"
+					target="_blank"
+					>Handler</a
+				>
+				for functions that.
+			</p>
+			<ul>
+				<li>Are <code>async fn</code>s.</li>
+				<li>
+					Take no more than 16 arguments that all implement
+					<a
+						href="https://docs.rs/axum/latest/axum/extract/trait.FromRequest.html"
+						target="_blank"
+						>FromRequest</a
+					>.
+				</li>
+				<li>
+					Returns something that implements
+					<a
+						href="https://docs.rs/axum/latest/axum/response/trait.IntoResponse.html"
+						target="_blank"
+						>IntoResponse</a
+					>.
+				</li>
+				<li>
+					If a closure is used it must implement <code>Clone + Send</code> and be
+					<code>'static</code>.
+				</li>
+				<li>
+					Returns a future that is <code>Send</code>. The most common way to accidentally
+					make a future <code>!Send</code> is to hold a <code>!Send</code> type across an
+					<code>await</code>.
+				</li>
+			</ul>
+
+			<h2>Other Notes</h2>
+			<h3>
+				<a href="https://docs.rs/axum/latest/axum/struct.Extension.html" target="_blank"
+					><code>axum::Extension</code></a
+				>
+			</h3>
+			<p>Extractor and response for extensions.</p>
+
+			<h3>Others</h3>
+
+			<p>
+				<code>FromRequest</code> is implemented for <code>Option</code>. Check the
+				<a
+					href="https://docs.rs/axum-core/latest/src/axum_core/extract/mod.rs.html#258-260"
+					target="_blank"
+					>source</a
+				>.
+			</p>
+
+			<h2>Stuff</h2>
+			<ul>
+				<li>
+					<a
+						href="https://docs.rs/axum/latest/axum/handler/trait.Handler.html"
+						target="_blank"
+						>https://docs.rs/axum/latest/axum/handler/trait.Handler.html</a
+					>
+				</li>
+
+				<li>
+					<a href="https://docs.rs/axum/latest/axum/handler/index.html" target="_blank"
+						>https://docs.rs/axum/latest/axum/handler/index.html</a
+					>
+				</li>
+
+				<li>
+					<a
+						href="https://docs.rs/tower-service/0.3.1/tower_service/trait.Service.html"
+						target="_blank"
+						>https://docs.rs/tower-service/0.3.1/tower_service/trait.Service.html</a
+					>
+				</li>
+				<li>
+					<a
+						href="https://github.com/hyperium/h3/blob/master/examples/server.rs"
+						target="_blank"
+						>https://github.com/hyperium/h3/blob/master/examples/server.rs</a
+					>
+				</li>
+				<li>
+					<a href="https://github.com/hyperium/h3" target="_blank"
+						>https://github.com/hyperium/h3</a
+					>
+				</li>
+				<li>
+					<a
+						href="https://docs.rs/axum/latest/axum/routing/struct.Router.html"
+						target="_blank"
+						>https://docs.rs/axum/latest/axum/routing/struct.Router.html</a
+					>
+				</li>
+			</ul>
+		</article>
+	</body>
+</html>
