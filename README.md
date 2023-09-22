@@ -1,6 +1,7 @@
-# Server Axum
+# Example HTTP Server using Axum
 
-This is just a simple example of a HTTPS server written in Rust using the axum framework.
+This is just a simple example of a HTTPS server written in Rust using the
+[Axum](https://docs.rs/axum/latest/axum/index.html) framework.
 
 -   It have tracing instrumentation.
 -   It implements basic in-memory sessions based on cookies.
@@ -14,9 +15,9 @@ cargo run
 # run the server in watch mode
 cargo watch -q -c -w src/ -x run
 # enable tower_http request/response tracing
-RUST_LOG=server_axum=debug,tower_http=debug cargo run
+RUST_LOG=example_server_axum=debug,tower_http=trace cargo run
 # enable tower_http request/response tracing and run the server in watch mode
-RUST_LOG=server_axum=debug,tower_http=debug cargo watch -q -c -w src/ -w public/index.html -x run
+RUST_LOG=example_server_axum=debug,tower_http=trace cargo watch -q -c -w src/ -w public/index.html -x run
 ```
 
 > Note: you need to `cargo install cargo-watch` to use the _watch_ mode.

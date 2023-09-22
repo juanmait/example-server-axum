@@ -23,7 +23,7 @@ const HTML: &str = include_str!("../public/index.html");
 // hold a !Send type across an await.
 #[instrument]
 pub async fn handler(user_id: UserIdFromSession) -> impl IntoResponse {
-    let (headers, user_id, is_cookie_created) = match user_id {
+    let (headers, _user_id, _is_cookie_created) = match user_id {
         UserIdFromSession::FoundUserId(user_id) => (HeaderMap::new(), user_id, false),
         UserIdFromSession::CreatedFreshUserId(new_user) => {
             let mut headers = HeaderMap::new();
